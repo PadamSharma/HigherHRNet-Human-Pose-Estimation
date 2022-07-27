@@ -69,6 +69,7 @@ class RandomHorizontalFlip(object):
             for i, _output_size in enumerate(self.output_size):
                 mask[i] = mask[i][:, ::-1] - np.zeros_like(mask[i])
                 joints[i] = joints[i][:, self.flip_index]
+                # print(i)
                 joints[i][:, :, 0] = _output_size - joints[i][:, :, 0] - 1
 
         return image, mask, joints

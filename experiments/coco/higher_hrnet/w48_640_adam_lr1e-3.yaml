@@ -25,7 +25,7 @@ DATASET:
   SCALE_TYPE: 'short'
   MAX_TRANSLATE: 40
   MIN_SCALE: 0.75
-  NUM_JOINTS: 17
+  NUM_JOINTS: 12
   ROOT: 'data/coco'
   TEST: val2017
   TRAIN: train2017
@@ -99,7 +99,7 @@ MODEL:
       - True
   INIT_WEIGHTS: True
   NAME: pose_higher_hrnet
-  NUM_JOINTS: 17
+  NUM_JOINTS: 12
   PRETRAINED: 'models/pytorch/imagenet/hrnet_w48-8ef0771d.pth'
   TAG_PER_JOINT: True
 TEST:

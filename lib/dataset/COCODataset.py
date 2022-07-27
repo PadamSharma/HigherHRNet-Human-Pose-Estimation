@@ -186,12 +186,12 @@ class CocoDataset(Dataset):
                 if cfg.DATASET.WITH_CENTER and not cfg.TEST.IGNORE_CENTER:
                     kpt = kpt[:-1]
 
-                kpts[int(file_name[-16:-4])].append(
+                kpts[int(file_name)].append(
                     {
                         'keypoints': kpt[:, 0:3],
                         'score': scores[idx][idx_kpt],
                         'tags': kpt[:, 3],
-                        'image': int(file_name[-16:-4]),
+                        'image': int(file_name),
                         'area': area
                     }
                 )
@@ -255,7 +255,7 @@ class CocoDataset(Dataset):
         cat_id = data_pack['cat_id']
         keypoints = data_pack['keypoints']
         cat_results = []
-        num_joints = 17
+        num_joints = 12
 
         for img_kpts in keypoints:
             if len(img_kpts) == 0:

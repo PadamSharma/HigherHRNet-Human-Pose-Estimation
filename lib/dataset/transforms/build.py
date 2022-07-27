@@ -11,10 +11,10 @@ from __future__ import print_function
 
 from . import transforms as T
 
-
 FLIP_CONFIG = {
     'COCO': [
-        0, 2, 1, 4, 3, 6, 5, 8, 7, 10, 9, 12, 11, 14, 13, 16, 15
+        # 0, 2, 1, 4, 3, 6, 5, 8, 7, 10, 9, 12, 11, 14, 13, 16, 15
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
     ],
     'COCO_WITH_CENTER': [
         0, 2, 1, 4, 3, 6, 5, 8, 7, 10, 9, 12, 11, 14, 13, 16, 15, 17
@@ -52,7 +52,7 @@ def build_transforms(cfg, is_train=True):
 
     # coco_flip_index = [0, 2, 1, 4, 3, 6, 5, 8, 7, 10, 9, 12, 11, 14, 13, 16, 15]
     # if cfg.DATASET.WITH_CENTER:
-        # coco_flip_index.append(17)
+    # coco_flip_index.append(17)
     if 'coco' in cfg.DATASET.DATASET:
         dataset_name = 'COCO'
     elif 'crowd_pose' in cfg.DATASET.DATASET:
@@ -69,14 +69,14 @@ def build_transforms(cfg, is_train=True):
             T.RandomAffineTransform(
                 input_size,
                 output_size,
-                max_rotation,
+                # max_rotation,
                 min_scale,
                 max_scale,
                 scale_type,
                 max_translate,
                 scale_aware_sigma=cfg.DATASET.SCALE_AWARE_SIGMA
             ),
-            T.RandomHorizontalFlip(coco_flip_index, output_size, flip),
+            # T.RandomHorizontalFlip(coco_flip_index, output_size, flip),
             T.ToTensor(),
             T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ]
