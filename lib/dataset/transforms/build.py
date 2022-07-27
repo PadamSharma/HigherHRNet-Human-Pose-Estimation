@@ -69,7 +69,7 @@ def build_transforms(cfg, is_train=True):
             T.RandomAffineTransform(
                 input_size,
                 output_size,
-                # max_rotation,
+                max_rotation,
                 min_scale,
                 max_scale,
                 scale_type,
